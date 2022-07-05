@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hospital extends Model
 {
-    protected $fillable = ['hname','registration','trade','ownername','email','phone','address','password','city','requirments'];
-    protected $casts = [ 'requirments' => 'array' ];
+    protected $fillable = ['hname','registration','trade','ownername','email','phone','address','city','requirements'];
+    protected $casts = [ 'requirements' => 'array' ];
 }

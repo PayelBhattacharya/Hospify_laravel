@@ -5,26 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Hospital Registration</title>
+    <title>Add Details</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <style>
-        #banner {
-            /* background: url('../img/bg-banner.jpg') no-repeat fixed; */
-            background-size: cover;
-            min-height: 1199px;
-            position: relative;
-            background: linear-gradient(#d5d8f6, #8096d3);
-            /* background-blend-mode: soft-light; */
-        }
 
-        /*
-    .bg-color {
-      background-color: RGBA(13, 70, 83, 0.78);
-      min-height: 1020px;
-    } */
 
         @media (min-width: 1025px) {
             .h-custom {
@@ -150,14 +137,31 @@
             margin-left: 12px;
             margin-top: 10px;
         }
+        .btn-warning{
+            margin-top: 4px;
+    margin-left: 1214px;
+    width: 115px;
+    border-radius: 20px;
+        }
+
+        .btn-warning a{
+            color: black;
+    text-decoration: none;
+        }
+        .btn-warning a:hover{
+            text-decoration: underline;
+        }
 
     </style>
 </head>
 
 <body>
+    @include('sweetalert::alert')
+
     <section id="banner" class="banner">
         <div class="bg-color">
             <img src="{{ asset('admin/images/logo2.png') }}" class="logo" alt="">
+            <a class="btn btn-warning" href="/hospital_dashboard">Dashboard</a>
             <form action="{{ route('hospital_details.store') }}" method="POST">
                 {{ csrf_field() }}
                 <section class="h-100 h-custom gradient-custom-2">
@@ -166,7 +170,7 @@
                             <div class="col-12">
                                 <div class="card card-registration card-registration-2" style="border-radius: 15px;">
                                     <div class="card-body p-0">
-                                        <h3 class="text-center">New Hospital Registration</h3>
+                                        <h3 class="text-center">Add Hospital Details</h3>
                                         <div class="row g-0" style="width: 1295px;">
                                             <div class="col-lg-6">
                                                 <div class="p-5">
@@ -218,11 +222,11 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="mb-3 pb-2">
+                                                    <div class="mb-3 pb-2" style="display:none;">
                                                         <div class="form-outline form-white">
                                                             <input type="text" id="form3Examplea2"
-                                                                class="form-control form-control-lg" name="email"
-                                                                required />
+                                                                class="form-control form-control-lg" value="{{Auth::user()->email}}"
+                                                                name="email" required />
                                                             <label class="form-label"
                                                                 for="form3Examplea2">Email</label>
                                                         </div>
@@ -256,16 +260,6 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-7 mb-4 pb-2">
-                                                            <div class="form-outline form-white">
-                                                                <input type="password" id="form3Examplea4"
-                                                                    class="form-control form-control-lg" name="password"
-                                                                    required />
-                                                                <label class="form-label"
-                                                                    for="form3Examplea4">Password</label>
-                                                            </div>
-                                                        </div>
-
                                                         <div class="row">
                                                             <div class="col-md-7 mb-4 pb-2">
 
@@ -283,7 +277,7 @@
                                                                                 <option value="Howrah">Howrah</option>
                                                                                 <option value="Serampore">Serampore
                                                                                 </option>
-                                                                                <option value="Bhadrhwar">Bhradeswar
+                                                                                <option value="Bhradeswar">Bhradeswar
                                                                                 </option>
                                                                                 <option value="Chandannagar">
                                                                                     Chandannagar</option>
@@ -318,21 +312,21 @@
                                                         <div class="requirements">
                                                             <div class="checkbox1">
                                                                 <input type="checkbox" name="requirements[]"
-                                                                    value="I.C.U.">I.C.U.
+                                                                    value="ICU">I.C.U.
                                                                 <input type="checkbox" name="requirements[]"
                                                                     value="VENTILATION">VENTILATION
                                                                 <input type="checkbox" name="requirements[]"
-                                                                    value="COVID BED">COVID BED
+                                                                    value="COVID_BED">COVID BED
                                                                 <input type="checkbox" name="requirements[]"
-                                                                    value="NORMAL BED">NORMAL BED
+                                                                    value="NORMAL_BED">NORMAL BED
                                                                 <input type="checkbox" name="requirements[]"
-                                                                    value="COVID VACCINATION">COVID VACCINATION
+                                                                    value="COVID_VACCINATION">COVID VACCINATION
                                                                 <input type="checkbox" name="requirements[]"
-                                                                    value="CITY SCAN">CITY SCAN
+                                                                    value="CITY_SCAN">CITY SCAN
                                                                 <input type="checkbox" name="requirements[]"
-                                                                    value="BLOOD BANK">BLOOD BANK
+                                                                    value="BLOOD_BANK">BLOOD BANK
                                                                 <input type="checkbox" name="requirements[]"
-                                                                    value="OXYGEN AVALABILITY">OXYGEN AVALABILITY
+                                                                    value="OXYGEN_AVALABILITY">OXYGEN AVALABILITY
                                                             </div>
                                                             <label class="form-label" for="form3Examplea8">Available
                                                                 Facilities</label>
@@ -340,7 +334,7 @@
 
                                                         <div class="form-check d-flex justify-content-start mb-4 pb-3">
                                                             <input class="form-check-input me-3" type="checkbox"
-                                                                value="" id="form2Example3c" />
+                                                                value="" id="form2Example3c" onclick="change_button(this,'button')" />
                                                             <div class="adjust">
                                                                 <label class="form-check-label checkbox text-black"
                                                                     for="formCheck-1" style="margin-top: 79px;">
@@ -352,7 +346,7 @@
                                                         </div>
 
                                                         <button type="submit" class="btn btn-primary pulse"
-                                                            data-mdb-ripple-color="dark" value="submit">Submit</button>
+                                                            data-mdb-ripple-color="dark" value="submit" id="button" disabled="disabled">Submit</button>
 
                                                     </div>
                                                 </div>
@@ -367,6 +361,15 @@
         </div>
         </div>
     </section>
+    <script type = "text/javascript">
+        function change_button(checkbx,button_id) {
+            var btn = document.getElementById(button_id);
+            if (checkbx.checked == true) {
+                btn.disabled = "";
+            } else {
+                btn.disabled = "disabled";
+            }
+        }
+        </script>
 </body>
-
 </html>

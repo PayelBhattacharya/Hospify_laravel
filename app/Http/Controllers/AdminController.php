@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
+
+use App\Models\feedback;
+
+use RealRashid\SweetAlert\Facades\Alert;
+
 class AdminController extends Controller
 {
     /**
@@ -43,9 +49,10 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $data=User::all();
+        return view('hospify.admin.admin_dashboard',['users'=>$data]);
     }
 
     /**
@@ -79,6 +86,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = User::where('id', $id)->firstorfail()->delete();
+        Alert::success('Success','Data Deleted');
+        return back();
     }
 }

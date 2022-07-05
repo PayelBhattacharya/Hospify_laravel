@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Booking Form HTML Template</title>
+    <title>Book Hospital</title>
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
     <!-- Bootstrap CSS -->
@@ -55,19 +55,37 @@
         li {
             font-size: 20px;
         }
+        .dashboard {
+        width: 121px;
+        height: 37px;
+        border-radius: 50px;
+        background-color: green;
+        margin-left: 1362px;
+        top: 16px;
+        position: absolute;
+    }
+
+    .dashboard a {
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .dashboard a:hover {
+        text-decoration: underline;
+    }
 
     </style>
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div id="booking" class="section">
         <div class="container-flex">
             <div class="img">
                 <img src="{{ asset('admin/images/logo2.png') }}" class="logo">
             </div>
-            <div class="row mb-4 px-3">
-                <h1 class="mb-0 mr-4 mt-2 text-center">Book your hospital</h1>
-            </div>
+            {{-- <button class="dashboard"><a href="/dashboard">Dashboard</a></button> --}}
         </div>
         <div class="section-center">
             <div class="container">
@@ -75,52 +93,64 @@
                     <div class="booking-form">
                         <div class="booking-bg">
                             <div class="form-header">
-                                <h2>Doctor Details</h2>
+
+                                <h2>Book Your<br>Hospital</h2>
+                                <a href="/dashboard" style="color: white;
+                                text-decoration: none;
+                                font-style: italic;
+                                margin-left: 260px;
+                                font-size: 19px;
+                                border: 2px solid black;
+                                border-radius: 20px;
+                                padding: 9px;
+                                margin-top: -66px;
+                                position: absolute;
+                                background-color: #008aff;">Dashboard</a></button>
                             </div>
                         </div>
-                        <form action="{{ route('book_hospital.store') }}" method="POST">
-                            {{-- <div class="row">
-								<div class="col-md-6"> --}}
+                        <form action="{{ route('book_hospital.store',['email'=> $email, 'useremail'=>Auth::user()->email]) }}" method="POST">
                             {{ csrf_field() }}
+
                             <div class="form-group">
                                 <span class="form-label">Patient Name</span>
-                                <input class="form-control" type="text" name="name" required>
+                                <input class="form-control" type="text" name="name" placeholder="Enter Patient Name" required>
                             </div>
-                            {{-- </div>
-								<div class="col-md-6"> --}}
+
                             <div class="form-group">
                                 <span class="form-label">Age</span>
-                                <input class="form-control" type="number" name="age" required>
+                                <input class="form-control" type="number" name="age" placeholder="Enter Age" required>
                             </div>
 
                             <div class="form-group">
                                 <span class="form-label">Address</span>
-                                <input class="form-control" type="text" name="address" required>
+                                <input class="form-control" type="text" name="address" placeholder="Enter Address" required>
                             </div>
-                            {{-- </div>
-							</div>
-							<div class="row">
-								<div class="col-md-6"> --}}
+
+                            <div class="form-group">
+                                <span class="form-label">Patient Email</span>
+                                <input class="form-control" type="text" name="user_email" placeholder="Enter Patient Email" required>
+                            </div>
+
                             <div class="form-group">
                                 <span class="form-label">Relation with patient</span>
-                                <input class="form-control" type="text" name="relation" required>
+                                <input class="form-control" type="text" name="relation" placeholder="Enter Relation with patient" required>
                             </div>
-                            {{-- </div>
-								<div class="col-md-6"> --}}
+
                             <div class="form-group">
                                 <span class="form-label">Contact No.</span>
-                                <input class="form-control" type="number" name="phone" required>
+                                <input class="form-control" type="number" name="phone" placeholder="Enter Contact No." required>
                             </div>
-                            {{-- </div>
-							</div> --}}
+
                             <div class="form-group">
-                                <span class="form-label">Requirment</span>
-                                <input class="form-control" type="text" name="requirment" required>
+                                <span class="form-label">Requirement</span>
+                                <input class="form-control" type="text" name="requirement" placeholder="Enter Requirement" required>
                             </div>
+
                             <div class="form-group">
                                 <span class="form-label">Booking Date</span>
                                 <input class="form-control" type="date" name="date" required>
                             </div>
+
                             <div class="form-btn">
                                 <button type="submit" class="submit-btn" value="submit">Book now</button>
                             </div>

@@ -3,15 +3,12 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Search Your Hospital</title>
+<title>Ambulances</title>
 <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
 <meta name="keywords"
     content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-{{-- selec2 cdn --}}
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('admin/css/font-awesome.min.css') }}">
@@ -32,7 +29,7 @@
         font-size: 16px;
         color: #000;
         overflow-x: hidden;
-        height: 100%;
+        height: 1024px;
         background-repeat: no-repeat;
         background-color: #f3fbf9;
     }
@@ -106,9 +103,12 @@ banner
 
 
     .container-fluid {
-        margin-left: 225px;
+        margin-left: 161px;
         margin-top: 42px;
         display: flex;
+    }
+    .container{
+        margin-left: 102px;
     }
 
     .btn {
@@ -444,11 +444,6 @@ contact us
         border: 1px solid #5dc1e7;
     }
 
-    .select2-container--default .select2-selection--multiple {
-        background-color: #daedf2;
-        border: 1px solid #5dc1e7;
-    }
-
     .validation {
         color: red;
         display: none;
@@ -616,11 +611,10 @@ footer
     }
 
     .card0 {
-        box-shadow: 0px 4px 24px 0px #757575;
         border-radius: 0px;
-        height: 633px;
-        width: 92%;
-        margin-left: -64px;
+        height: 970px;
+        width: 109%;
+        margin-left: -170px;
     }
 
     .card1 {
@@ -638,7 +632,7 @@ footer
     .logo {
         width: 200px;
         height: 71px;
-        margin-top: 20px;
+        margin-top: -27px;
         margin-left: 6px;
     }
 
@@ -646,25 +640,28 @@ footer
         text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
         font-size: 41px;
         font-family: 'Times New Roman', Times, serif;
-        margin-left: -232px;
+        margin-left: -301px;
+        margin-top: -29px;
     }
 
     .image {
-        width: 554px;
-        height: 437px;
-        margin-left: -11px;
-        margin-top: 36px;
+        width: 407px;
+        height: 361px;
+        margin-left: 187px;
+        margin-top: 77px;
     }
 
     .border-line {
         border-right: 1px solid #EEEEEE
     }
+
+
     .line {
         height: 1px;
-        width: 79%;
+        width: 93%;
         background-color: #dcd4d4;
         margin-top: 9px;
-        margin-left: -229px;
+        margin-left: -306px;
     }
 
     .or {
@@ -777,132 +774,98 @@ footer
         margin-top: 43px;
     }
 
-    ::placeholder { color:black; }
+    th {
+        width: 170px;
+    }
+
+    .table {
+        width: 100%;
+        box-shadow: 0px 4px 24px 0px #757575;
+        margin-top: -13px;
+        margin-left: -165px;
+    }
+
+    .table th,
+    td {
+        text-align: center;
+    }
+
+    table.even {
+        border-collapse: collapse;
+    }
+
+    table.even tr:nth-child(2n+2) {
+        background-color: #81d1eb;
+    }
+    .col-md-12{
+        width:124%;
+    }
+    .btn-primary{
+    width: 90px;
+    margin-left: -2px;
+    }
+    .container-para{
+        border: 1px solid darkgrey;
+    background-color: #ebebdd;
+    width: 724px;
+    }
 
 </style>
 </head>
 
 <body>
     <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
-        @if(count($errors) > 0)
-             <div class="alert alert-danger">
-              <ul>
-              @foreach($errors->all() as $error)
-               <li>{{$error}}</li>
-              @endforeach
-              </ul>
-             </div>
-             @endif
-             @if(\Session::has('success'))
-             <div class="alert alert-success">
-              <p>{{ \Session::get('success') }}</p>
-             </div>
-             @endif
         <div class="card card0 border-0">
             <div class="row d-flex">
                 <div class="col-lg-6">
                     <div class="card1 pb-5">
                         <div class="row"> <img src="{{ asset('admin/images/logo2.png') }}"
                                 class="logo"> </div>
-                        <div class="row px-3 justify-content-center mt-4 mb-5"> <img
-                                src="{{ asset('admin/images/search.png') }}" class="image"> </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <br />
+                                    <br />
+                                    @if ($message = Session::get('success'))
+                                        <div class="alert alert-success">
+                                            <p>{{ $message }}</p>
+                                        </div>
+                                    @endif
+                                    <div class="container-fluid">
+                                        <table class="table table-hover table-striped table-bordered even">
+                                            <tr>
+                                                <th scope="col">Ambulance Name</th>
+                                                <th scope="col">Location</th>
+                                                <th scope="col">Phone</th>
+                                            </tr>
+                                            @foreach ($ambulances as $row)
+                                                <tr>
+                                                    <th scope="row">{{ $row['name'] }}</th>
+                                                    <td>{{ $row['location'] }}</td>
+                                                    <td>{{ $row['phone'] }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="card2 card border-0 px-4 py-5">
                         <div class="row mb-4 px-3">
-                            <h1 class="mb-0 mr-4 mt-2">Search Your Hospital</h1>
+                            <h1 class="mb-0 mr-4 mt-2">Ambulances based on your search</h1>
                         </div>
                         <div class="row px-3 mb-4">
                             <div class="line"></div>
                             <div class="line"></div>
                         </div>
-                        <div class="container-fluid adjust">
-                            <div class="dropdown dropdown1">
-                                <span class="caret"></span>
-                                <form action="{{ action('App\Http\Controllers\UserController@fetch') }}" method="POST"
-                                    enctype="multipart/form-data">
-                                    {{ csrf_field() }}
-
-                                    <select class="select2-multiple form-control selcls"
-                                        class="btn btn2 dropdown-toggle" type="button" id="about-us"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="city[]"
-                                        id="city" multiple="multiple" data-placeholder="choose location">
-
-                                        <div class="dropdown-menu" class="btn btn2 dropdown-toggle" type="button"
-                                            id="about-us" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-
-                                            <option value=""></option>
-                                            {{-- <option value="" disabled selected hidden>choose location</option> --}}
-                                            <option value="Kolkata">Kolkata</option>
-                                            <option value="Howrah">Howrah</option>
-                                            <option value="Serampore">Serampore</option>
-                                            <option value="Bhradeswar">Bhradeswar</option>
-                                            <option value="Chandannagar">Chandannagar</option>
-                                            <option value="Bidhannagar">Bidhannagar</a>
-                                            <option value="Chinsurah">Chinsurah</a>
-                                            <option value="Bandel">Bandel</a>
-                                            <option value="Uttarpara">Uttarpara</a>
-                                            <option value="Salar">Salar</a>
-                                            <option value="Salua">Salua</a>
-                                            <option value="Purulia">Purulia</a>
-                                            <option value="Bashirhat">Bashirhat</a>
-                                            <option value="Hashnabad">Hashnabad</a>
-                                            <option value="Taki">Taki</a>
-                                            <option value="Barrackpore">Barrackpore</a>
-                                            <option value="Katwa">Katwa</a>
-                                            <option value="Arambagh">Arambagh</a>
-                                        </div>
-                                    </select>
-                                    </button>
-                            </div>
-                            <div class="dropdown dropdown2">
-                                <span class="caret"></span>
-                                <select class="form-control selcls" class="btn btn2 dropdown-toggle" type="button"
-                                    id="about-us" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    name="requirements" id="requirements">
-
-                                    <div class="dropdown-menu" class="btn btn2 dropdown-toggle" type="button"
-                                        id="about-us" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                        <option value="" disabled selected hidden>choose requirment</option>
-                                        <option value="I.C.U.">I.C.U.</option>
-                                        <option value="VENTILATION">VENTILATION</option>
-                                        <option value="COVID BED">COVID BED</option>
-                                        <option value="NORMAL BED">NORMAL BED</option>
-                                        <option value="COVID VACCINATION">COVID VACCINATION</option>
-                                        <option value="CITY SCAN">CITY SCAN</option>
-                                        <option value="BLOOD BANK">BLOOD BANK</option>
-                                        <option value="OXYGEN AVALABILITY">OXYGEN AVALABILITY</option>
-                                    </div>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="button">
-                            <button class="btn-primary button1" type="submit" id="about-us" value="submit">search
-                            </button>
-                        </div>
-                        </form>
-                    </div>
+                     </div>
                 </div>
             </div>
         </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        // Select2 Multiple
-        $('.select2-multiple').select2({
-            // placeholder: {
-            //     text: 'choose location',
-            //     color: 'black'
-            // },
-            allowClear: true
-        });
-
-    });
-</script>
 
 </html>

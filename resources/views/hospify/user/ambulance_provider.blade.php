@@ -3,7 +3,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Results</title>
+<title>Ambulance Results</title>
 <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
 <meta name="keywords"
     content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
@@ -13,15 +13,8 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('admin/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
-<!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
-<style>
-    /*
-    Theme Name: Medilab
-    Theme URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-    Author: BootstrapMade.com
-    Author URL: https://bootstrapmade.com
-*/
 
+<style>
     body {
         font-family: 'Open Sans', sans-serif;
         line-height: 20px;
@@ -29,7 +22,7 @@
         font-size: 16px;
         color: #000;
         overflow-x: hidden;
-        height: 1024px;
+        height: 100%;
         background-repeat: no-repeat;
         background-color: #f3fbf9;
     }
@@ -103,12 +96,9 @@ banner
 
 
     .container-fluid {
-        margin-left: 161px;
+        margin-left: 225px;
         margin-top: 42px;
         display: flex;
-    }
-    .container{
-        margin-left: 102px;
     }
 
     .btn {
@@ -611,10 +601,11 @@ footer
     }
 
     .card0 {
+        box-shadow: 0px 4px 24px 0px #757575;
         border-radius: 0px;
-        height: 970px;
+        height: 633px;
         width: 109%;
-        margin-left: -170px;
+    margin-left: -170px;
     }
 
     .card1 {
@@ -632,7 +623,7 @@ footer
     .logo {
         width: 200px;
         height: 71px;
-        margin-top: -27px;
+        margin-top: 20px;
         margin-left: 6px;
     }
 
@@ -641,27 +632,58 @@ footer
         font-size: 41px;
         font-family: 'Times New Roman', Times, serif;
         margin-left: -301px;
-        margin-top: -29px;
     }
 
     .image {
-        width: 407px;
-        height: 361px;
-        margin-left: 187px;
-        margin-top: 77px;
+        width: 512px;
+    height: 456px;
+    margin-left: 74px;
+    margin-top: 14px;
     }
 
     .border-line {
         border-right: 1px solid #EEEEEE
     }
 
+    .facebook {
+        background-color: #3b5998;
+        color: #fff;
+        font-size: 18px;
+        padding-top: 5px;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        cursor: pointer
+    }
+
+    .twitter {
+        background-color: #1DA1F2;
+        color: #fff;
+        font-size: 18px;
+        padding-top: 5px;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        cursor: pointer
+    }
+
+    .linkedin {
+        background-color: #2867B2;
+        color: #fff;
+        font-size: 18px;
+        padding-top: 5px;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        cursor: pointer
+    }
 
     .line {
         height: 1px;
-        width: 93%;
-        background-color: #dcd4d4;
-        margin-top: 9px;
-        margin-left: -306px;
+    width: 93%;
+    background-color: #dcd4d4;
+    margin-top: 9px;
+    margin-left: -297px;
     }
 
     .or {
@@ -766,49 +788,31 @@ footer
 
     .row {
         margin-right: -2px;
-        margin-left: 1px;
+    margin-left: 1px;
     }
 
     .adjust {
         margin-left: -125px;
         margin-top: 43px;
     }
-
-    th {
-        width: 170px;
+    th{
+        width:170px;
     }
-
     .table {
-        width: 100%;
-        box-shadow: 0px 4px 24px 0px #757575;
-        margin-top: -13px;
-        margin-left: -165px;
-    }
-
-    .table th,
-    td {
-        text-align: center;
-    }
-
-    table.even {
-        border-collapse: collapse;
-    }
-
-    table.even tr:nth-child(2n+2) {
-        background-color: #81d1eb;
-    }
-    .col-md-12{
-        width:124%;
-    }
-    .btn-primary{
-    width: 90px;
-    margin-left: -2px;
-    }
-    .container-para{
-        border: 1px solid darkgrey;
-    background-color: #ebebdd;
-    width: 724px;
-    }
+        width: 87%;
+    max-width: 100%;
+    margin-top: -13px;
+    margin-left: -239px;
+}
+.table th,td{
+    text-align: center;
+}
+table.even{
+	border-collapse:collapse;
+}
+table.even tr:nth-child(2n+2){
+    background-color: #81d1eb;
+}
 
 </style>
 </head>
@@ -821,51 +825,34 @@ footer
                     <div class="card1 pb-5">
                         <div class="row"> <img src="{{ asset('admin/images/logo2.png') }}"
                                 class="logo"> </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <br />
-                                    <br />
-                                    @if ($message = Session::get('success'))
-                                        <div class="alert alert-success">
-                                            <p>{{ $message }}</p>
-                                        </div>
-                                    @endif
-
-                                    <div class="container-para">
-                                        <p class="text-center">
-                                            click on book now to book your hospital and to see the specialists of that hospital
-                                        </p>
-                                    </div>
-                                    <div class="container-fluid">
-                                        <table class="table table-hover table-striped table-bordered even">
-                                            <tr>
-                                                <th scope="col">Hospital Name</th>
-                                                <th scope="col">Address</th>
-                                                <th scope="col">City</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Phone</th>
-                                            </tr>
-                                            @foreach ($hospitals as $row)
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                         <br />
+                                         {{-- <h3 align="center">Resultant Hospitals</h3> --}}
+                                         <br />
+                                         @if($message = Session::get('success'))
+                                         <div class="alert alert-success">
+                                          <p>{{$message}}</p>
+                                         </div>
+                                         @endif
+                                         <div class="container-fluid">
+                                            <table class="table table-hover table-striped table-bordered even">
                                                 <tr>
-                                                    <th scope="row">{{ $row['hname'] }}</th>
-                                                    <td>{{ $row['address'] }}</td>
-                                                    <td>{{ $row['city'] }}</td>
-                                                    <td>{{ $row['email'] }}</td>
-                                                    <td>{{ $row['phone'] }}</td>
-                                                    <td>
-                                                        <form method="post" action="{{action('App\Http\Controllers\UserController@doctor_details',$row['email'])}}">
-                                                         {{csrf_field()}}
-                                                         <button type="submit" class="btn btn-primary">Book now</button>
-                                                        </form>
-                                                    </td>
+                                                 <th scope="col">Ambulance Name</th>
+                                                 <th scope="col">Phone</th>
                                                 </tr>
-                                            @endforeach
-                                        </table>
+                                                @foreach( $ambulances as $row)
+                                                <tr>
+                                                 <th scope="row">{{$row['name']}}</th>
+                                                 <td>{{$row['phone']}}</td>
+                                                </tr>
+                                                @endforeach
+                                               </table>
+                                         </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
@@ -873,15 +860,54 @@ footer
                     <div class="card2 card border-0 px-4 py-5">
                         <div class="row mb-4 px-3">
                             <h1 class="mb-0 mr-4 mt-2">Hospitals based on your search</h1>
+                            <!-- <div class="facebook text-center mr-3">
+                                <div class=""></div>
+                            </div> -->
+                            <!-- <div class="twitter text-center mr-3">
+                                <div class=""></div>
+                            </div> -->
+                            <!-- <div class="linkedin text-center mr-3">
+                                <div class=""></div>
+                            </div> -->
                         </div>
                         <div class="row px-3 mb-4">
                             <div class="line"></div>
                             <div class="line"></div>
                         </div>
-                     </div>
+                        <!-- <div class="row px-3"> <label class="mb-1">
+                                <h6 class="mb-0 text-sm">Email Address</h6>
+                            </label> <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address"> </div>
+                        <div class="row px-3"> <label class="mb-1">
+                                <h6 class="mb-0 text-sm">Password</h6>
+                            </label> <input type="password" name="password" placeholder="Enter password"> </div>
+                        <div class="row px-3 mb-4">
+                            <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"> <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div> <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
+                        </div> -->
+                        {{-- <div class="row px-3">
+                            <p class="mb-0 text-sm">
+                               Search hospitals based on your location preference and requirments
+                            </p>
+                        </div> --}}
+
+                        <div class="row px-3 justify-content-center mt-4 mb-5"> <img
+                            src="{{ asset('admin/images/fetch.png') }}" class="image"> </div>
+
+                    </div>
                 </div>
+                {{-- <div class="bg-blue py-4">
+                    <div class="footer">Copyright &copy; 2019. All rights
+                            reserved.
+                        <div class="social-contact ml-4 ml-sm-auto"> <span class="fa fa-facebook mr-4 text-sm"></span>
+                            <span class="fa fa-google-plus mr-4 text-sm"></span> <span
+                                class="fa fa-linkedin mr-4 text-sm"></span> <span
+                                class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span>
+                        </div>
+                    </div>
+                </div> --}}
             </div>
         </div>
 </body>
 
 </html>
+
+

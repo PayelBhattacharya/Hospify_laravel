@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Models\Hospital;
 
+use App\Models\book_hospital;
+
+use RealRashid\SweetAlert\Facades\Alert;
+
 class HospitalDetailsController extends Controller
 {
     /**
@@ -15,8 +19,8 @@ class HospitalDetailsController extends Controller
      */
     public function index()
     {
-        $hospital = Hospital::all()->toArray();
-        return view('hospital.admin', compact('hospital'));
+        // $hospital = Hospital::all()->toArray();
+        // return view('hospital.admin', compact('hospital'));
     }
 
     /**
@@ -26,7 +30,7 @@ class HospitalDetailsController extends Controller
      */
     public function create()
     {
-        return view("hospital.hospital_details");
+        return view('hospify.hospital.hospital_details');
     }
 
     /**
@@ -45,9 +49,8 @@ class HospitalDetailsController extends Controller
             'email'=>'required',
             'phone'=>'required',
             'address'=>'required',
-            'password'=>'required',
             'city'=>'required',
-            'requirments'=>'required'
+            'requirements'=>'required'
         ]);
 
         $data=new Hospital([
@@ -58,13 +61,13 @@ class HospitalDetailsController extends Controller
             'email'          =>  $request->get('email'),
             'phone'          =>  $request->get('phone'),
             'address'        =>  $request->get('address'),
-            'password'       =>  $request->get('password'),
             'city'           =>  $request->get('city'),
-            'requirments'    =>  $request->get('requirments')
+            'requirements'    =>  $request->get('requirements')
 
         ]);
         $data->save();
-        return view('hospital_dashboard');
+        Alert::success('Success', 'You\'ve Successfully added your details');
+        return back();
     }
 
     /**
@@ -84,10 +87,11 @@ class HospitalDetailsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$email)
     {
-        $hospital = Hospital::find($id);
-        return view('hospital.edit', compact('hospital', 'id'));
+        $email=$request->email;
+        $data=Hospital::where('email',$email)->get();
+        return view('hospify.hospital.edit',['email'=>$email],compact('data'));
     }
 
     /**
@@ -97,33 +101,22 @@ class HospitalDetailsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $this->validate($request, [
-            'hname'    =>  'required',
-            'registration'     =>  'required',
-            'trade'     => 'required',
-            'ownername'     => 'required',
-            'email'     => 'required',
-            'phone'     =>  'required',
-            'address'     =>'required',
-            'city'     =>  'required',
-            'password'     => 'required',
-            'requirements' =>'required'
-        ]);
-        $hospital =Hospital::find($id);
-        $hospital->hname = $request->get('hname');
-        $hospital->registration = $request->get('registration');
-        $hospital->trade = $request->get('trade');
-        $hospital->ownername = $request->get('ownername');
-        $hospital->email = $request->get('email');
-        $hospital->phone = $request->get('phone');
-        $hospital->address = $request->get('address');
-        $hospital->city = $request->get('city');
-        $hospital->password = $request->get('password');
-        $hospital->requirements=  $request->get('requirements');
-        $hospital->save();
-        return redirect()->route('hospital.index')->with('success', 'Data Updated');
+        $student = Hospital::find($request->id);
+        $student->hname = $request->hname;
+        $student->registration = $request->registration;
+        $student->trade = $request->trade;
+        $student->ownername = $request->ownername;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        $student->address = $request->address;
+        $student->city = $request->city;
+        $student->requirements=  $request->requirements;
+
+        $student->save();
+        Alert::success('success','Succesfully Updated');
+        return back();
     }
 
     /**
@@ -138,22 +131,15 @@ class HospitalDetailsController extends Controller
     }
     public function search()
     {
-        return view('search');
+        return view('hospify.user.search');
     }
+
+
     public function fetch(Request $request)
     {
-        $city = $request->get('city');
-        $requirments =$request->get('requirments');
-
-        $hospitals = Hospital::where('city',$city)
-                  ->where('requirments','like', '%' . $requirments . '%')
-                  ->get();
-
-        return view('fetch',compact('hospitals'));
-
-    }
-
-    public function hospital_login(){
-        return view('hospital_login');
+        $email=$request->email;
+        $data=book_hospital::where('email',$email)
+        ->get();
+        return view('hospify.hospital.booking_members',compact('data'));
     }
 }

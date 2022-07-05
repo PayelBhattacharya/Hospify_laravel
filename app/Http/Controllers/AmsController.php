@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Ams;
+use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AmsController extends Controller
 {
@@ -14,7 +15,7 @@ class AmsController extends Controller
      */
     public function index()
     {
-        //
+       //
     }
     /**
      * Show the form for creating a new resource.
@@ -23,8 +24,7 @@ class AmsController extends Controller
      */
     public function create()
     {
-        return view('admin_dashboard');
-
+        return view('hospify.admin.ambulance');
     }
 
     /**
@@ -48,7 +48,8 @@ class AmsController extends Controller
             'phone'     => $request->get('phone'),
         ]);
         $Am->save();
-        return view('admin_dashboard')->with('message','Successfully Registered');
+        Alert::success('Success','Data Stored');
+        return back();
     }
 
 
@@ -58,9 +59,10 @@ class AmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $data=feedback::all();
+        return view('hospify.admin.view_feedback',compact('data'));
     }
 
     /**
@@ -94,7 +96,9 @@ class AmsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $data = User::where('id', $id)->firstorfail()->delete();
+        // Alert::success('Success','Data Deleted');
+        // return back();
     }
 
     public function fetch(Request $request)
@@ -103,6 +107,6 @@ class AmsController extends Controller
 
         $ambulances=ams::where('location',$location)
         ->get();
-        return view('fetch_ambulance',compact('ambulances'));
+        return view('hospify.user.fetch_ambulance',compact('ambulances'));
     }
 }

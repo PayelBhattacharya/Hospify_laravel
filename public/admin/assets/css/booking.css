@@ -32,10 +32,10 @@
 .booking-form .booking-bg {
     position: absolute;
     left: 17px;
-    top: 19px;
+    top: 15px;
     bottom: -25px;
     width: 426px;
-    height: 689px;
+    height: 705px;
     background-size: cover;
     background-position: center;
     padding: 25px;
@@ -69,13 +69,15 @@
 
 .booking-form .form-header h2 {
 	font-family: 'Playfair Display', serif;
-	margin-top: 0;
-	margin-bottom: 15px;
-	font-weight: 900;
-	color: #fff;
-	font-size: 42px;
-	text-transform: capitalize;
-    margin-left: 22px;
+    margin-top: 21px;
+    margin-bottom: 15px;
+    font-weight: 900;
+    color: #fff;
+    font-size: 47px;
+    text-transform: capitalize;
+    margin-left: 83px;
+    top: 140px;
+    position: absolute;
 }
 
 .booking-form .form-header p {
@@ -95,7 +97,7 @@
 	color: #151515;
 	border: 1px solid #e5e5e5;
 	font-size: 16px;
-	font-weight: 700;
+	font-weight: 1000;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	border-radius: 40px;
@@ -104,15 +106,15 @@
 }
 
 .booking-form .form-control::-webkit-input-placeholder {
-	color: #e5e5e5;
+	color: rgb(154, 151, 151);
 }
 
 .booking-form .form-control:-ms-input-placeholder {
-	color: #e5e5e5;
+	color: rgb(154, 151, 151);
 }
 
 .booking-form .form-control::placeholder {
-	color: #e5e5e5;
+	color: rgb(154, 151, 151);
 }
 
 .booking-form .form-control:focus {

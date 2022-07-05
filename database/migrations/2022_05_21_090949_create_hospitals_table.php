@@ -22,9 +22,8 @@ class CreateHospitalsTable extends Migration
             $table->string('email');
             $table->bigInteger('phone');
             $table->string('address');
-            $table->string('password');
             $table->string('city');
-            $table->json('requirments');
+            $table->json('requirements');
             $table->timestamps();
         });
     }

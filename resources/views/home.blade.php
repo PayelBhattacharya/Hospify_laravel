@@ -34,6 +34,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary m-1" role="status">
@@ -54,16 +55,16 @@
         <div class="row gx-0">
             <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
-                    <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Opening Hours: Mon - Tues : 6.00 am - 10.00 pm, Sunday Closed </small>
+                    {{-- <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Opening Hours: Mon - Tues : 6.00 am - 10.00 pm, Sunday Closed </small> --}}
                 </div>
             </div>
             <div class="col-md-6 text-center text-lg-end">
                 <div class="position-relative d-inline-flex align-items-center bg-primary text-white top-shape px-5">
                     <div class="me-3 pe-3 border-end py-2">
-                        <p class="m-0"><i class="fa fa-envelope-open me-2"></i>info@example.com</p>
+                        <p class="m-0"><i class="fa fa-envelope-open me-2"></i>hospify@gmail.com</p>
                     </div>
                     <div class="py-2">
-                        <p class="m-0"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</p>
+                        <p class="m-0"><i class="fa fa-phone-alt me-2"></i>+91 7865467899</p>
                     </div>
                 </div>
             </div>
@@ -74,9 +75,7 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
-        <a href="index.html" class="navbar-brand p-0">
-            <h1 class="m-0 text-primary"><i class="fas fa-hospital-alt"></i></i>Hospify</h1>
-        </a>
+        <h1 class="m-0 text-primary"><i class="fas fa-hospital-alt"></i></i>Hospify</h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -195,21 +194,21 @@
                             <h6 class="text-white mb-0">Sunday</h6>
                             <p class="mb-0"> 8:00am - 5:00pm</p>
                         </div>
-                        <a class="btn btn-light" href="">Appointment</a>
+                        {{-- <a class="btn btn-light" href="">Appointment</a> --}}
                     </div>
                 </div>
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
                     <div class="bg-dark d-flex flex-column p-5" style="height: 300px;">
                         <h3 class="text-white mb-3">Emergency Oxygen Cylinder <i class="fas fa-hospital"></i></i></h3>
                         <div ><h4 style="color: white; font-style:italic;">You can search nearest Oxygen cylinder</h4></div>
-                        <a class="btn btn-light" href="">Search Here</a>
+                        <a class="btn btn-light" href="https://covidhelp.parivesh.org/market/oxygen-cylinders-leads-in-west-bengal/">Search Here</a>
                     </div>
                 </div>
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
                     <div class="bg-primary d-flex flex-column p-5" style="height: 300px;">
                         <h3 class="text-white mb-3">Emergency Blood Bank Blood <i class="fa fa-hospital" aria-hidden="true"></i></h3>
                         <div><h4 style="color: white; font-style:italic;">You can search nearest Blood Bank</h4></div>
-                        <a class="btn btn-light" href="">Search Here</a>
+                        <a class="btn btn-light" href="https://www.wbhealth.gov.in/pages/blood_bank">Search Here</a>
                     </div>
                 </div>
             </div>
@@ -237,7 +236,7 @@
                         </div>
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.6s">
                             <h5 class="mb-3"><i class="fa fa-check-circle text-primary me-3"></i>24/7 Opened</h5>
-                            <h5 class="mb-3"><i class="fa fa-check-circle text-primary me-3"></i>Find Covid Hospitals</h5>
+                            <h5 class="mb-3"><i class="fa fa-check-circle text-primary me-3"></i>Book Hospitals</h5>
                         </div>
                     </div>
                 </div>
@@ -278,7 +277,7 @@
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <button class="btn btn-dark w-100 py-3" type="submit">Book Your Ambulance</button>
+                                    <button class="btn btn-dark w-100 py-3" type="submit">Search Your Ambulance</button>
                                 </div>
                             </div>
                         </form>
@@ -300,7 +299,7 @@
                 <div class="col-lg-7">
                     <div class="section-title mb-5">
                         <h5 class="position-relative d-inline-block text-primary text-uppercase">Our Services</h5>
-                        <h1 class="display-5 mb-0">We Offer The Best Quality Dental Services</h1>
+                        <h1 class="display-5 mb-0">We Offer The Best Quality Health Services</h1>
                     </div>
                     <div class="row g-5">
                         <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.6s">
@@ -313,10 +312,10 @@
                         </div>
                         <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.9s">
                             <div class="rounded-top overflow-hidden">
-                                <img class="img-fluid" src="{{asset('admin1/img/service-2.jpg')}}" alt="">
+                                <img class="img-fluid" src="{{asset('admin1/img/service-2.jpg')}}" alt="" style="height:228px;">
                             </div>
                             <div class="position-relative bg-light rounded-bottom text-center p-4">
-                                <h5 class="m-0">Covid Test</h5>
+                                <h5 class="m-0">Covid Vaccination</h5>
                             </div>
                         </div>
                     </div>
@@ -429,10 +428,11 @@
     <div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s" style="z-index: 1;">
         <div class="container">
             <div class="bg-primary p-5">
-                <form class="mx-auto" style="max-width: 600px;">
+                <form class="mx-auto" style="max-width: 600px;" action="{{route('feedback.store')}}" method="POST">
+                    {{ csrf_field() }}
                     <div class="input-group">
-                        <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                        <button class="btn btn-dark px-4">Send Feedback</button>
+                        <input type="text" class="form-control border-white p-3"name="text" id="text" placeholder="Write your note">
+                        <button class="btn btn-dark px-4" value="submit">Send Feedback</button>
                     </div>
                 </form>
             </div>
@@ -448,29 +448,40 @@
                 <div class="col-lg-3 col-md-6">
                     <h3 class="text-white mb-4">Quick Links</h3>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                        <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                        <a class="text-light mb-2" href="/"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-light mb-2" href="#about"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                        <a class="text-light mb-2" href="#service"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                        <a class="text-light mb-2" href="##emergency"><i class="bi bi-arrow-right text-primary me-2"></i>Emergency Services</a>
+                        {{-- <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                        <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>--}}
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h3 class="text-white mb-4">Popular Links</h3>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                        <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                        <a class="text-light mb-2" href="/"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-light mb-2" href="#about"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                        <a class="text-light mb-2" href="#service"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                        <a class="text-light mb-2" href="##emergency"><i class="bi bi-arrow-right text-primary me-2"></i>Emergency Services</a>
+                        {{-- <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                        <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a> --}}
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h3 class="text-white mb-4">Get In Touch</h3>
-                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>info@example.com</p>
-                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+012 345 67890</p>
+                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>Chandandannagar</p>
+                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>hospify@gmail.com</p>
+                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>7865467899</p>
                 </div>
+                {{-- <div class="col-lg-3 col-md-6">
+                    <h3 class="text-white mb-4">Follow Us</h3>
+                    <div class="d-flex">
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+                    </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -480,6 +491,11 @@
                 <div class="col-md-6 text-center text-md-start">
                     <p class="mb-md-0">&copy; <a class="text-white border-bottom" href="#">Hospify</a>. All Rights Reserved.</p>
                 </div>
+                {{-- <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">H</a><br>
+                        Distributed by <a class="text-white border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                    </p>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -488,7 +504,6 @@
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

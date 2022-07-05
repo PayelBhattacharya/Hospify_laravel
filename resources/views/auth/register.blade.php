@@ -164,7 +164,7 @@
                 </div>
                 <div class="mt-4">
                     <x-jet-label for="password" value="{{ __('Password') }}" />
-                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" Placeholder="Enter Password contain 8 words" required autocomplete="new-password"  style="    margin-left: 49px;
+                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" Placeholder="Enter Password" required autocomplete="new-password"  style="    margin-left: 49px;
                     height: 44px;
                     background-color: #efe2e2;
                     padding: 10px;
@@ -192,7 +192,7 @@
                     <div class="dropdown-menu" class="btn btn2 dropdown-toggle" type="button"
                         id="about-us" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <option value="User">User</option>
-                        <option value="Admin">Admin</option>
+                        {{-- <option value="Admin">Admin</option> --}}
                         <option value="Hospital User">Hospital</option>
 
 

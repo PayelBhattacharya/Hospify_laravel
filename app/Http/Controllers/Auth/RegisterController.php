@@ -34,18 +34,15 @@ class RegisterController extends Controller
     public function redirectTo() {
         $usertype= Auth::user()->usertype;
         switch ($usertype) {
-          case 'Admin':
-            return '/admin_dashboard';
-            break;
-          case 'User':
-            return '/dashboard';
-            break;
-          case 'Hospital':
-            return '/hospital_dashboard';
-            break;
-          default:
-            return '/hospital_dashboard';
-          break;
+            case 'User':
+                return '/dashboard';
+                break;
+            case 'Hospital':
+                return '/hospital_dashboard';
+                break;
+            default:
+                return '/admin_dashboard';
+                break;
         }
       }
     /**
@@ -69,7 +66,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string','confirmed'],
             'usertype' =>['required','string','max:255'],
         ]);
     }

@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\hospital_detail;
+use App\Models\hospital;
 
 use App\Models\book_hospital;
+
+use App\Models\availability;
+
+use App\Models\specialist;
+
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class UserController extends Controller
 {
@@ -26,9 +33,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('book_hospitals');
+        $email=$request->email;
+        return view('hospify.user.book_hospitals',['email'=>$email]);
     }
 
     /**
@@ -43,24 +51,28 @@ class UserController extends Controller
             'name'        =>  'required',
             'age'         =>  'required',
             'address'     =>  'required',
+            'user_email'  =>  'required',
             'relation'    =>  'required',
             'phone'       =>  'required',
-            'requirment'  =>  'required',
-            'date'        =>  'required'
+            'requirement' =>  'required',
+            'date'        =>  'required',
+            'email'       =>  'required'
         ]);
 
-        $data= new book_hospital([
-            'name'         =>$request->get('name'),
-            'age'          =>$request->get('age'),
-            'address'      =>$request->get('address'),
-            'relation'     =>$request->get('relation'),
-            'phone'        =>$request->get('phone'),
-            'requirment'   =>$request->get('requirment'),
-            'date'         =>$request->get('date')
-        ]);
+        $data=new book_hospital();
+        $data->name=$request->name;
+        $data->age=$request->age;
+        $data->address=$request->address;
+        $data->user_email=$request->user_email;
+        $data->relation=$request->relation;
+        $data->phone=$request->phone;
+        $data->requirement=$request->requirement;
+        $data->date=$request->date;
+        $data->email=$request->email;
         $data->save();
-        // return redirect()->route('book_hospital.create')->with('message','Booking Successful');
-        return view('dashboard')->with('message','Booking Successful');
+        Alert::success('Success', 'Booking Successful');
+
+        return back();
     }
 
     /**
@@ -107,33 +119,18 @@ class UserController extends Controller
     {
         //
     }
-    // $milestone =  Milestone::where('unique_id', $request->id)
-    // ->whereHas('block', function ($q) use($request) {
-    //     $q->whereNotIn('unique_id', $request->milestone);
-    // })
-    // ->first();
+
     public function fetch(Request $request)
     {
         $city=$request->city;
-        $requirments =$request->get('requirments');
+        $requirements =$request->get('requirements');
 
-        $hospitals = hospital_detail::whereIn('city',$request->city)
-                  ->where('requirments','like', '%' . $requirments . '%')
-                  ->get();
+        $hospitals = hospital::join('availabilities', 'availabilities.email', '=', 'hospitals.email')
+                    ->whereIn('hospitals.city',$request->city)
+                    ->where('hospitals.requirements','like', '%' . $requirements . '%')
+                    ->get(['hospitals.*','availabilities.*']);
 
-        // $hospitals = hospital_registration::where(function ($query) use($request){
-        //     $query->where('city',$request->city);
-        // })->where('requirments','like', '%' . $requirments . '%')->get();
-
-        // $hospitals = hospital_registration::where(function ($query) use($city,$requirments) {
-        //      for ($i = 0; $i < count($city); $i++){
-        //         $query->where('city',$city[$i])
-        //         ->where('requirments','like', '%' . $requirments . '%')
-        //         ->get();
-        //      }
-        // });
-
-        return view('fetch',compact('hospitals'));
+        return view('hospify.user.fetch',['requirements'=>$requirements],compact('hospitals'));
 
     }
 
@@ -141,8 +138,9 @@ class UserController extends Controller
     {
         $email = request('email');
 
-        $hospitals = hospital_detail::where('email',$email)
+        $hospitals = specialist::where('email','=',$email)
                 ->get();
-        return view('doctor_details',compact('hospitals'));
+        return view('hospify.user.doctor_details',compact('hospitals'));
     }
+
 }

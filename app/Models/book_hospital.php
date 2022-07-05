@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class book_hospital extends Model
 {
-    // use HasFactory;
-    // protected $table='book_hospitals';
-    // protected $primaryKey='id';
-    protected $fillable=['name','age','address','relation','phone','requirment','date'];
+    protected $fillable=['name','age','address','user_email','relation','phone','requirement','date','email'];
+    // public $timestamps = false;
+    // const UPDATED_AT = false;
 }

@@ -18,10 +18,12 @@ class CreateBookHospitalsTable extends Migration
             $table->string('name');
             $table->string('age');
             $table->string('address');
-            $table->string('relation');
+            $table->string('address');
+            $table->string('user_email');
             $table->bigInteger('phone');
-            $table->string('requirment');
+            $table->string('requirement');
             $table->date('date');
+            $table->string('email');
             $table->timestamps();
         });
     }

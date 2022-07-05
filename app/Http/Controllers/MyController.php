@@ -32,7 +32,7 @@ class MyController extends Controller
     }
     public function terms()
     {
-        return view('terms&conditions');
+        return view('hospify.hospital.terms&conditions');
     }
 
 }
